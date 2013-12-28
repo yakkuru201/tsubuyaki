@@ -46,7 +46,10 @@ class TweetsController < ApplicationController
         format.html { redirect_to tweets_path, notice: 'Tweet was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html do
+          @tweets = Tweet.all
+          render action: "index"
+        end
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end
