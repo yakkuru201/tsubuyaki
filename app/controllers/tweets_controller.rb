@@ -55,6 +55,12 @@ class TweetsController < ApplicationController
     end
   end
 
+  def favorite
+    @tweet = Tweet.find(params[:tweet_id])
+    current_user.favorites.create(tweet: @tweet)
+    redirect_to tweets_path
+  end
+
   # DELETE /tweets/1
   # DELETE /tweets/1.json
   def destroy
