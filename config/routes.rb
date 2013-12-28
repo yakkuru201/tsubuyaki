@@ -2,7 +2,7 @@ Tsubuyaki::Application.routes.draw do
   devise_for :users
   resources :tweets
 
-  root to : 'tweets#index'
+  root to: 'tweets#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
