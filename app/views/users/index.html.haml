@@ -2,5 +2,9 @@
 
 .users
   = div_for @users do |u|
-    = u.email
-    = link_to "follow", user_follow_path(u), method: :post
+  - = u.email
+  - if u == current_user
+  - elsif not u.followed? current_user
+    = link_to "follow", user_follow_path, method: :post
+  - else
+    = link_to "unfollow", user_follow_path(u), method: :delete
