@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :tweets
   has_many :favorites
+
+  has_many :follows
+  has_many :following_users, through: :follows, source: :User
+  has_many :inverse_follows, class_name: Follow, foreign_key: :followed_id
+  has_many :followed_users, through: :inverse_follows
 end
