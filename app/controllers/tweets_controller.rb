@@ -61,6 +61,13 @@ class TweetsController < ApplicationController
     redirect_to tweets_path
   end
 
+  def unfavorite
+    @tweet = Tweet.find(params[:tweet:id])
+    @favorite = current_user.favorites.find_by_tweet_id(params[:tweet_id])
+    @favorite.destroy
+    redirect_to tweets_path
+  end
+
   # DELETE /tweets/1
   # DELETE /tweets/1.json
   def destroy
