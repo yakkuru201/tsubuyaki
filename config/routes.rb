@@ -5,6 +5,7 @@ Tsubuyaki::Application.routes.draw do
     resource :favorite, only: [:create, :destroy]
   end
 
+  resources :users
   root to: 'tweets#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
